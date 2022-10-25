@@ -5,7 +5,8 @@ var filtre_mail = new RegExp("(@){1}");
 
 document.getElementById("nom").value = "";
 document.getElementById("prenom").value = "";
-//document.getElementsByTagName("Sexe").value = "";
+document.getElementById("feminin").checked = false;
+document.getElementById("masculin").checked = false;
 document.getElementById("date").value = "";
 document.getElementById("code_postal").value = "";
 document.getElementById("adresse").value = "";
@@ -22,8 +23,9 @@ var RaisonNom = document.getElementById("RaisonNom");
 var prenom = document.getElementById("prenom");
 var RaisonPrenom = document.getElementById("RaisonPrenom");
 
-// var nom = document.getElementsByTagName("sexe");
-// var RaisonNom = document.getElementById("RaisonSexe");
+var masculin = document.getElementById("masculin");
+var feminin = document.getElementById("feminin");
+var RaisonSexe = document.getElementById("RaisonSexe");
 
 var date = document.getElementById("date");
 var RaisonDate = document.getElementById("RaisonDate");
@@ -46,7 +48,7 @@ function validation(e){
     function TestNom(){
         if(nom.value === ""){
             e.preventDefault();
-            RaisonNom.textContent = "Manquant";
+            RaisonNom.textContent = "Donnez votre nom";
             RaisonNom.style.color = "red";
         }else if(filtre_cara.test(nom.value) == false){
             e.preventDefault();
@@ -61,7 +63,7 @@ function validation(e){
     function TestPrenom(){
         if(prenom.value === ""){
             e.preventDefault();
-            RaisonPrenom.textContent = "Manquant";
+            RaisonPrenom.textContent = "Donnez votre prénom";
             RaisonPrenom.style.color = "red";
         }else if(filtre_cara.test(prenom.value) == false){
             e.preventDefault();
@@ -73,10 +75,21 @@ function validation(e){
     }
     TestPrenom();
 
+    function TestSexe(){
+        if((!masculin.checked && feminin.checked) || (masculin.checked && !feminin.checked)){
+            RaisonSexe.remove();
+        }else{
+            e.preventDefault();
+            RaisonSexe.textContent = "Cocher votre sexe";
+            RaisonSexe.style.color = "red";
+        }
+    }
+    TestSexe();
+
     function TestDate(){
         if(date.value === ""){
             e.preventDefault();
-            RaisonDate.textContent = "Manquant";
+            RaisonDate.textContent = "Indiquez votre date de naissance";
             RaisonDate.style.color = "red";
         }else{
             RaisonDate.remove();
@@ -87,7 +100,7 @@ function validation(e){
     function TestCodePost(){
         if(code_postal.value === ""){
             e.preventDefault();
-            RaisonCodePost.textContent = "Manquant";
+            RaisonCodePost.textContent = "Donnez votre code postal";
             RaisonCodePost.style.color = "red";
         }else if(filtre_CP.test(code_postal.value) == false){
             e.preventDefault();
@@ -102,7 +115,7 @@ function validation(e){
     function TestMail(){
         if(email.value === ""){
             e.preventDefault();
-            RaisonMail.textContent = "Manquant";
+            RaisonMail.textContent = "Donnez votre e-mail";
             RaisonMail.style.color = "red";
         }else if(filtre_mail.test(email.value) == false){
             e.preventDefault();
@@ -117,7 +130,7 @@ function validation(e){
     function TestQuestion(){
         if(question.value === ""){
             e.preventDefault();
-            RaisonQuestion.textContent = "Manquant";
+            RaisonQuestion.textContent = "Ecrivez votre question";
             RaisonQuestion.style.color = "red";
         }else{
             RaisonQuestion.remove();
@@ -138,6 +151,7 @@ function validation(e){
 annuler.addEventListener("click", function(){
     RaisonNom.remove();
     RaisonPrenom.remove();
+    RaisonSexe.remove();
     RaisonDate.remove();
     RaisonCodePost.remove();
     RaisonMail.remove();
