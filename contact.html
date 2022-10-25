@@ -26,31 +26,41 @@
             <p>* Ces zones sont obligatoires</p>
             <fieldset>
                 <legend>Vos coordonnées</legend>
-                <label for="nom">Votre nom* : </label><input type="text" name="nom" id="nom" required>
-                <label for="prenom">Votre prénom* : </label><input type="text" name="prenom" id="prenom" required>
-                <label for="sexe">Sexe* : </label><input type="radio" name="Sexe" value="Féminin" required> Féminin
-                    <input type="radio" name="Sexe" value="Masculin" required> Masculin
-                <label for="date">Date de naissance* :  </label><input type="date" name="ddn" id="date" required>
-                <label for="code_postal">Code postal* : </label><input type="text" name="code_postal" id="code_postal" required>
+                <label for="nom">Votre nom* : </label><input type="text" name="nom" id="nom">
+                    <span id="RaisonNom"></span>
+                <label for="prenom">Votre prénom* : </label><input type="text" name="prenom" id="prenom">
+                    <span id="RaisonPrenom"></span>
+                <label for="sexe">Sexe* : </label><input type="radio" name="Sexe" value="Féminin"> Féminin
+                    <input type="radio" name="Sexe" value="Masculin"> Masculin
+                    <span id="RaisonSexe"></span>
+                <label for="date">Date de naissance* :  </label><input type="date" name="ddn" id="date">
+                    <span id="RaisonDate"></span>
+                <label for="code_postal">Code postal* : </label><input type="text" name="code_postal" id="code_postal">
+                    <span id="RaisonCodePost"></span>
                 <label for="adresse">Adresse : </label><input type="text" name="adresse" id="adresse">
                 <label for="ville">Ville : </label><input type="text" name="ville" id="ville">
-                <label for="email">Email* : </label><input type="text" name="email" id="email" required>
+                <label for="email">Email* : </label><input type="text" name="email" id="email">
+                    <span id="RaisonMail"></span>
             </fieldset>
             <fieldset>
                 <legend>Votre demande</legend>              
                 <label for="sujet">Sujet* : </label>
-                <select id="sujet" required> 
-                    <option value="" selected>Veuillez séléctionner un sujet</option>
-                    <option value="commandes">Mes commandes</option>
-                    <option value="question">Question sur un produit</option>
-                    <option value="reclamation">Réclamation</option>
-                    <option value="autres">Autres</option>
+                <select id="sujet"> 
+                    <option value="selection" selected>Veuillez séléctionner un sujet</option>
+                    <option>Mes commandes</option>
+                    <option>Question sur un produit</option>
+                    <option>Réclamation</option>
+                    <option>Autres</option>
                 </select>
-                <label for="question">Votre question* : </label><textarea name="question" id="question" cols="30" rows="2" required></textarea>
+                <label for="question">Votre question* : </label><textarea name="question" id="question" cols="30" rows="2"></textarea>
+                <span id="RaisonQuestion"></span>
             </fieldset>
-            <input type="checkbox" name="accepte" value="accepte" required> * J'accepte le traitement informatique de ce formulaire 
-            <button>Envoyer</button> 
-            <button>Annuler</button>
+                <input type="checkbox" id="cb"> * J'accepte le traitement informatique de ce formulaire
+                    <span id="RaisonCB"></span>
+            <div id="idv_bt">
+                <input type="submit" id="envoie" name="envoie" value="Envoyer" />
+                <input type="reset" id="annuler" name="annuler" value="Annuler" />
+            </div>
         </form>
         <div class="colonne">
             <p>[COLONNE DROITE]</p>
@@ -63,5 +73,8 @@
             <li><a href="#">Plan du site</a></li>
         </ul>
     </footer>
+
+
+    <script src="assets/js/javascript.js"></script>
 </body>
 </html>

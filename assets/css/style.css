@@ -99,6 +99,10 @@ fieldset{
     flex-direction: column;
 }
 
+#div_bt{
+    display: flex;
+    justify-items: flex-end;
+}
 
 
 @media screen and (max-width: 768px){
